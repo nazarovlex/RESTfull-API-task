@@ -10,8 +10,6 @@ start:
 .PHONY: clean
 clean:
 	rm -rf .pg_data
-	docker system prune
-
 
 .PHONY: restart
 restart:
