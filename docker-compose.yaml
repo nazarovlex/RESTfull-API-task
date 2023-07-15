@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    restart: on-failure
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: RESTfull_API_task
+      PGDATA: /pg-data
+    ports:
+      - 5432:5432
+    volumes:
+      - ./.pg_data/:/var/lib/postgresql/data
+    networks:
+      - web
+
+  web:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    restart: on-failure
+    ports:
+      - 8000:8000
+    networks:
+      - web
+    depends_on:
+      - postgres
+
+networks:
+  web:
+    name: web
