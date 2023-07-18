@@ -8,7 +8,6 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: RESTfull_API_task
-      PGDATA: /pg-data
     ports:
       - 5432:5432
     volumes:
